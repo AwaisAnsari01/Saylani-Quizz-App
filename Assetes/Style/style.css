@@ -1,53 +1,84 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* background-color:; */
+/* main logo */
+.main-logo{
+ color: white;
 }
-.nav-bar{
- margin: 10px;
- margin-left:20px;
-}
-#form{
-    border: solid black;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-right: 500px;
-    margin-left: 500px;
-    margin-top: 100px;
-    padding: 20px;
-    background-color: #368ed2;
+/* login head  */
+.login-head{
+  text-align: center; 
+  color: blue;  
+ }
+ 
+ 
+ 
+ 
+ /* registr head  */
+ .register-head{
+     text-align: center; 
+     color: blue;  
+ }
+ 
+ 
+ 
+ .sign-btn{
+     /* background-color: #0dcaf0; */
+     width: 6rem;
+     padding: .5rem .8rem;
+     border: 0px;
+     border-radius: 5px;
+ }
+ 
+ :hover.sign-btn{
+     background-color: #60def7;
+     border: 1px solid #0dcaf0;
+     transition: 1s;
+ }
+ 
+ 
+ #form{
+     /* background-color: black; */
+     height: 450px;
+     width: 350px;
+ margin: 1rem auto 0  auto ;
+ text-align: center;
+ padding: 20px;
+ 
+ }
+ 
+ input{
+     text-align: center;
+     padding: .4rem .8rem;
+     border: 0px;
+     border-radius: 5px;
+ background-color: rgb(65, 65, 65);
+     width: 250px;
+     color: #60def7;
+ }
+ 
+ .submit-btn{
+     background-color: #0dcaf0;
+     width: 6rem;
+     padding: .5rem .8rem;
+     border: 0px;
+     border-radius: 5px;  
+ }
+ 
+ :hover.submit-btn{
+     background-color: #60def7;
+     border: 1px solid #0dcaf0;
+     transition: 1s;
+ }
+ 
+ 
+ a{
+     text-decoration: none;
+     color: black;
+     
+ }
+ .white{
     color: white;
-    border-radius: 20px;
-}
-.ham{
-    color: black;
-}
-.justify-evenly{
-    justify-content: space-evenly;
-}
-.justify-between{
-    justify-content: space-between;
-}
-.black{
-    color: black;
-    /* text-decoration: none; */
-}
-.text-deco{
-    text-decoration: none;
-}
-.input{
-    border-radius: 5px;
-    padding: 5px;
-}
-.login-btn{
-    padding: 7px;
-    border-radius: 15px;
-    background-color: #368ed2;
-    /* color: white; */
-    cursor: pointer;
-}
-.login-btn:hover{
-    background-color: green;
-}
+ }
+ .radius{
+    border-radius: 40px;
+ }
+ 
+ 
