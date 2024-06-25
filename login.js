@@ -1,23 +1,22 @@
-// index.html KI JS FILE H YE
+const loginForm = document.querySelector("#login-form");
+const loginEmail = document.querySelector("#login-email");
+const loginPassword = document.querySelector("#login-password");
+const loginErrorDiv = document.querySelector("#form-error-div");
 
-let users  =  JSON.parse(localStorage.getItem('user'))
-let showData = document.querySelector('#showData')
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
+    const email = loginEmail.value;
+    const password = loginPassword.value;
 
-users.map((allUser)=>{
+    let data = JSON.parse(localStorage.getItem('users')) || [];
+    const filteredUsers = data.filter(user => user.email === email && user.password === password);
 
-    // showData.innerHTML = ""
-showData.innerHTML += `<div>
-<h1> ${allUser.username} </h1>
-<h1> ${allUser.email} </h1>
-<h1> ${allUser.password} </h1>
-
-</div>
-`
-
-})
-
-
-console.log(users);
-
-
+    if (filteredUsers.length > 0) {
+        alert("Login Successful!!!");
+        location.reload();
+        window.location = 'quiz.html'; 
+    } else {
+        loginErrorDiv.innerHTML = "Invalid email or password.";
+    }
+});

@@ -1,70 +1,44 @@
-// register.html KI JS FILE H YE 
+const form = document.querySelector("#form");
+const username = document.querySelector("#username");
+const email = document.querySelector("#email");
+const password = document.querySelector("#password");
+const errorDiv = document.querySelector("#form-error-div");
 
+const usernameRegex = /^[a-zA-Z0-9_]{4,15}$/;
+const passwordRegex = /^.{8,}$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-let signBtn = document.querySelector('.sign-btn')
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-let form  = document.getElementById("form")
+    const error = [];
+    if (!usernameRegex.test(username.value)) {
+        error.push("Invalid username. Must be 4 to 15 characters long.");
+    }
+    if (!emailRegex.test(email.value)) {
+        error.push("Invalid email address.");
+    }
+    if (!passwordRegex.test(password.value)) {
+        error.push("Invalid password. Must be at least 8 characters long.");
+    }
 
-
-let fullName = document.querySelector('.full-name')
-
-let email = document.querySelector('.email')
-
-let password = document.querySelector('.password')
-
-
-let userData = []
-let person = JSON.parse(localStorage.getItem('user'));
-if(person === null){
-    userData= [];
-}else{
-    userData= person;
-    console.log(person)
-}
-
-
-
-form.addEventListener('submit' , (event)=>{
-event.preventDefault()
-
-
-// show all values on console
-    console.log(fullName.value);
-    console.log(email.value);
-    console.log(password.value);
-
-
-
-// push all values on userData array
-
-
-if(isEmailRegistered(email)){
-    alert("this email is already use")
-}
-
-else{
-    userData.push(
-        {username : fullName.value,
-            email : email.value,
-            password : password.value
-        })
-}
-
-
-
-// console.log(userData);
-
-})
-
-
-function isEmailRegistered(email) {
-    return userData.includes(email.value);
-}
-
-
-
-signBtn.addEventListener('click',()=>{
-window.location = 'index.html'
-localStorage.setItem('user', JSON.stringify(userData))
-
-})
+    if (error.length > 0) {
+        errorDiv.innerHTML = error.join('<br>');
+    } else {
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const existingUsers = users.filter(user => user.email === email.value);
+        if (existingUsers.length > 0) {
+            errorDiv.innerHTML = "This Email is Already Registered. Please register with another Email."
+        } else {
+            const user = {
+                username: username.value,
+                email: email.value,
+                password: password.value
+            };
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            alert("User Registered Successfully!!!");
+            window.location = 'login.html'
+        }
+    }
+});
